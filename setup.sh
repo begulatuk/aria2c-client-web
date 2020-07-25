@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # Install rclone static binary
-wget -q https://downloads.rclone.org/v1.51.0/rclone-v1.51.0-linux-amd64.zip
-unzip -q rclone-v1.51.0-linux-amd64.zip
-export PATH=$PWD/rclone-v1.51.0-linux-amd64:$PATH
+wget -q https://github.com/xinxin8816/heroku-aria2c-21vianet/raw/master/rclone.zip
+unzip -q rclone.zip
+export PATH=$PWD:$PATH
+chmod 777 /app/rclone
 
 # Install aria2c static binary
 wget -q https://github.com/q3aql/aria2-static-builds/releases/download/v1.35.0/aria2-1.35.0-linux-gnu-64bit-build1.tar.bz2
@@ -18,5 +19,5 @@ wget -q https://github.com/P3TERX/aria2.conf/raw/master/dht.dat
 wget -q https://github.com/P3TERX/aria2.conf/raw/master/dht6.dat
 
 # Tracker
-tracker_list=`curl -Ns https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt | awk '$1' | tr '\n' ',' | cat`
+tracker_list=`curl -Ns https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt | awk '$1' | tr '\n' ',' | cat`
 echo "bt-tracker=$tracker_list" >> aria2c.conf
